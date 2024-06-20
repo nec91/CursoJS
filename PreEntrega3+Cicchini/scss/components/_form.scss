@@ -1,0 +1,109 @@
+.contact {
+    @include backColor-aling-fontFamily-textAling;
+
+    .contactForm {
+        display: flex;
+        min-height: 100vh;
+
+        .form {
+            background-color: nth($color, 2);
+            margin: auto;
+            width: 90%;
+            max-width: 400px;
+            padding: 4.5em 3em;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.30);
+            text-align: center;
+
+            h3 {
+                text-align: center;
+                font-style: italic;
+                font-size: nth($fontSize, 4);
+                color: nth($color, 7);
+                text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+            }
+
+            .textContact {
+                text-align: center;
+                font-style: normal;
+                font-size: nth($fontSize, 6);
+                color: nth($color, 3);
+                margin-bottom: 0.5em;
+            }
+
+            .formContainer {
+                margin-top: 3em;
+                display: grid;
+                gap: 2.5em;
+
+                .formGroup {
+                    position: relative;
+
+                    .formInput {
+                        width: 100%;
+                        background: none;
+                        color: nth($color, 5);
+                        font-size: nth($fontSize, 6);;
+                        padding: 0.6em 0.3em;
+                        border: none;
+                        outline: none;
+                        border-bottom: 1px solid nth($color, 4);
+                        font-family: "Saira", sans-serif;
+
+                        &:not(:placeholder-shown) {
+                            color: nth($color, 6);
+                        }
+
+                        &:focus+.formLabel,
+                        &:not(:placeholder-shown)+.formLabel {
+                            transform: translateY(-12px) scale(0.7);
+                            transform-origin: left top;
+                            color: nth($color, 7);
+                        }
+
+                        &:focus~.formLine,
+                        &:not(:placeholder-shown)~.formLine {
+                            transform: scale(1);
+                        }
+                    }
+
+                    .formLabel {
+                        color: nth($color, 4);
+                        cursor: pointer;
+                        position: absolute;
+                        top: 0;
+                        left: 5px;
+                        transform: translateY(10px);
+                        transition: transform 0.5s, color 0.3s;
+                    }
+
+                    .formLine {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: nth($color, 8);
+                        transform: scale(0);
+                        transform: left bottom;
+                        transition: transform 0.4s;
+                    }
+                }
+
+            }
+
+            .formSubmit {
+                background-color: nth($color, 8);
+                color: nth($color, 2);
+                font-family: "Saira", sans-serif;
+                font-weight: 300;
+                font-size: nth($fontSize, 6);;
+                padding: 0.8em 0;
+                border: none;
+                border-radius: 0.5em;
+            }
+
+        }
+    }
+
+}
