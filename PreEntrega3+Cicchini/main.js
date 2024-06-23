@@ -44,11 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = document.getElementById("username").value.toLowerCase().trim();
         const password = document.getElementById("password").value;
 
-        // Buscar el usuario en la base de datos (localStorage)
+
         let userDB = JSON.parse(localStorage.getItem('userDB'));
         const logResult = userDB.find((i) => i.user === username && i.password === password);
-
-        // Si el usuario no existe o la contraseña es incorrecta, mostrar mensaje y salir
         if (!logResult) {
             showMessage("Usuario o contraseña incorrectos. Intente nuevamente.", "danger");
             return;
@@ -60,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userLoggedId.push(logResult.id);
         sessionStorage.setItem("userLoggedId", JSON.stringify(userLoggedId));
 
-        // Redireccionar después de iniciar sesión
+
         setTimeout(() => {
             window.location.href = "calcForm.html";
         }, 2000);
@@ -97,13 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const passwordsMatch = password === password2;
         const passwordMatchError = passwordsMatch ? "" : "Las contraseñas no coinciden. Por favor, intente nuevamente.";
 
-        // Si hay errores, mostrar mensaje y salir de la función
+
         if (userError || emptyFieldsError || passwordMatchError) {
             showMessage(userError || emptyFieldsError || passwordMatchError, "danger");
             return;
         }
 
-        // Crear nuevo usuario y agregarlo a la base de datos
+
         let id = userDB.length + 1;
         let newUser = new User(user, password, name, lastName, age, gender, id);
         userDB.push(newUser);
@@ -113,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         showMessage("Usuario creado correctamente.", "success");
 
-        // Redireccionar a la página de inicio de sesión
+   
         setTimeout(() => {
             window.location.href = "loginForm.html";
         }, 2000);
